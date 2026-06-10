@@ -136,7 +136,7 @@ Todo o codigo foi revisado, adaptado e validado pelos membros da equipe. A logic
 ### 1. Clonar o repositorio
 
 ```bash
-git clone <url-do-repositorio>
+git clone https://github.com/SamuelGSouza/MedBlock
 cd MedBlock
 ```
 
