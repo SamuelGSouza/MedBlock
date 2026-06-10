@@ -364,7 +364,7 @@ export function PatientView() {
         ) : prontuario ? (
           <div className="flex flex-col gap-4">
             {/* Dados do paciente — somente leitura */}
-            <ProntuarioDisplay data={prontuario} exclude={["contato", "criticas", "historico"]} />
+            <ProntuarioDisplay data={prontuario} exclude={["contato", "criticas"]} />
 
             {/* Contato de emergência — editável */}
             <div className="rounded-xl border border-border bg-muted/20 p-4">

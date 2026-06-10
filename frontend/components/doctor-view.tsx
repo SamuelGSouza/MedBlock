@@ -33,6 +33,23 @@ import { type Address, isAddress } from "viem"
 import { CONTRACT_ADDRESS, CONTRACT_ABI } from "@/lib/contract"
 import { fetchFromIPFS, uploadToIPFS, type Prontuario, type Consulta } from "@/lib/ipfs"
 
+/** Extrai a mensagem de revert do contrato a partir do erro bruto do viem. */
+function parseContractError(e: unknown): string {
+  const raw = e instanceof Error ? e.message : String(e)
+  // Detecta a razao de revert entre aspas ou apos "reason:"
+  const reasonMatch =
+    raw.match(/reverted with the following reason:\s*([^\n]+)/) ??
+    raw.match(/execution reverted:\s*([^\n]+)/) ??
+    raw.match(/reason:\s*"([^"]+)"/) ??
+    raw.match(/reason:\s*([^\n]+)/)
+  const reason = reasonMatch?.[1]?.trim()
+  if (reason === "Acesso negado: sem permissao") {
+    return "Acesso negado: o paciente nao concedeu permissao de leitura ao seu endereco."
+  }
+  if (reason) return reason
+  return raw.split("\n")[0].slice(0, 120)
+}
+
 type AccessMode = "normal" | "emergency"
 
 interface RecordResult {
@@ -107,9 +124,7 @@ export function DoctorView() {
         setIsEncryptedContent(true)
         return
       }
-      setFetchError(
-        e instanceof Error ? e.message : "Erro ao buscar prontuário"
-      )
+      setFetchError(parseContractError(e))
     } finally {
       setLoading(false)
     }
@@ -153,11 +168,7 @@ export function DoctorView() {
         setIsEncryptedContent(true)
         return
       }
-      setFetchError(
-        e instanceof Error
-          ? e.message
-          : "Erro ao acessar prontuário em emergência"
-      )
+      setFetchError(parseContractError(e))
     } finally {
       setLoading(false)
     }

@@ -1,6 +1,18 @@
 # MedBlock
 
-Plataforma descentralizada de gestao de prontuarios medicos com controle de acesso on-chain e auditoria imutavel via blockchain.
+Plataforma descentralizada de gestão de prontuários médicos com controle de acesso on-chain e auditoria imutável via blockchain.
+
+---
+
+### Contrato Deployado
+
+- **Rede:** Ethereum Sepolia  
+- **Endereco:** `0xae34fd3ee1a7ed91e6af4b91cf606cd6bc2fd000`  
+- **Etherscan:** https://sepolia.etherscan.io/address/0xae34fd3ee1a7ed91e6af4b91cf606cd6bc2fd000
+
+### Evidência de Funcionamento
+
+Vídeo: [YouTube](https://youtu.be/3VGjacrBkR4)
 
 ---
 
@@ -88,11 +100,6 @@ CRM / Auditoria           --> consulta event logs publicamente para revisar o ac
 | Cifracao client-side | Web Crypto API (AES-GCM-256, PBKDF2) |
 | Estilizacao | Tailwind CSS v4, shadcn/ui |
 
-### Contrato Deployado
-
-- **Rede:** Ethereum Sepolia  
-- **Endereco:** `0xae34fd3ee1a7ed91e6af4b91cf606cd6bc2fd000`  
-- **Etherscan:** https://sepolia.etherscan.io/address/0xae34fd3ee1a7ed91e6af4b91cf606cd6bc2fd000
 
 ---
 
@@ -147,13 +154,13 @@ NEXT_PUBLIC_PINATA_JWT=seu_jwt_do_pinata_aqui
 
 ```bash
 cd frontend
-pnpm install
+npm install
 ```
 
 ### 4. Iniciar em modo desenvolvimento
 
 ```bash
-pnpm dev
+npm run dev
 ```
 
 Acesse http://localhost:3000.
@@ -163,7 +170,6 @@ Acesse http://localhost:3000.
 ```bash
 cd ..
 npm install
-npx hardhat compile
 ```
 
 ---
@@ -172,4 +178,5 @@ npx hardhat compile
 
 | Nome | GitHub |
 |---|---|
-| Adicionar integrantes | |
+| Samuel Gomes de Souza | [SamuelGSouza](https://github.com/samuelgsouza) |
+| Willian Gomes de Souza | [williang280](https://github.com/williang280)|
